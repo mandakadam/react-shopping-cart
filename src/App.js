@@ -3,6 +3,7 @@ import Products from  './components/Products';
 import Filter from  './components/Filter';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Basket from './components/Basket';
+import db from './db';
 
 class App extends Component {
   constructor(props) {
@@ -19,21 +20,9 @@ class App extends Component {
 
   componentDidMount(){
 
-    fetch('http://localhost:9000/products')
-    .then(res => {
-      return res.json()
-    })
-    .catch(err=>{
-      console.log(err)
-      fetch("db.json")
-      .then(res => res.json())
-      .then(data => data.products)
-    })
-    .then(data=>{
-      console.log(data)
-      this.setState({ products: data });
+    db().then(data=>{
+      this.setState({ products: data});
       this.listProducts();
-
     });
 
     

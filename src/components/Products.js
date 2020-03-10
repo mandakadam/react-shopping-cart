@@ -9,7 +9,7 @@ const Products = ({products, handleAddToCart}) =>{
                     {item.title}
                 </div>
                 <div className="card-body">
-                <img src={`products/${item.sku}_2.jpg`} alt={item.title} />
+                <img src={require(`./../products/${item.sku}_2.jpg`)} alt={item.title} />
 
                     <p>{item.description}
                     </p>
